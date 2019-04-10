@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Detacare</string>
+
+    <string name="in">Sign In</string>
+    <string name="up">Sign Up</string>
+    <string name="out">Sign Out</string>
+    <string name="not_acc">Belum punya akun? Daftar sekarang!</string>
+    <string name="have_acc">Sudah terdaftar? Silahkan masuk!</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="exit">Exit</string>
+
+    <string name="mail">Email / Phone</string>
+    <string name="pass">Password</string>
+    <string name="name">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="telp">No. Telephone</string>
+    <string name="spesialis">Spesialis</string>
+    <string name="addrs">Alamat</string>
+
+
+
+    <string name="list">Daftar Acara</string>
+    <string name="cost">IDR</string>
+    <string name="user">PARTICIPANT</string>
+
+    <string name="list_a">D enjoy your restoration 2019</string>
+    <string name="list_b">Minggu, 14 April 2014</string>
+    <string name="list_c">Hotel grand kemang, Jakarta</string>
+    <string name="list_d">500,000</string>
+    <string name="list_e">200</string>
+    <string name="list_f">Drg. Handoko Brimajaya</string>
+
+
+
+    <string name="kec">Labuhan Ratu</string>
+    <string name="kab">Bandar Lampung</string>
+</resources>

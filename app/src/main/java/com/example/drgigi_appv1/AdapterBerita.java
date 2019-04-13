@@ -46,7 +46,7 @@ class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.MyViewHolder> {
         holder.tvTglTerbit.setText(berita.get(position).getTanggalPosting());
 
         // Dapatkan url gambar
-        final String urlGambarBerita = "http://192.168.3.103/gg/images/" + berita.get(position).getFoto();
+        final String urlGambarBerita = "http://192.168.3.102:5000/" + berita.get(position).getFoto();
         // Set image ke widget dengna menggunakan Library Piccasso
         // krena imagenya dari internet
         Picasso.with(context).load(urlGambarBerita).into(holder.ivGambarBerita);

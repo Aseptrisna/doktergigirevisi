@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InitRetrofit {
     // URL Server API
-    public static String API_URL = "http://192.168.3.103/gg/";
+    public static String API_URL = "http://192.168.3.102:5000/";
 
     public static Retrofit setInit() {
         return new Retrofit.Builder().baseUrl(API_URL)

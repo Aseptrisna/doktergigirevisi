@@ -157,14 +157,14 @@ private RecyclerView recyclerView;
                     List<BeritaItem> data_berita = response.body().getBerita();
                     boolean status = response.body().isStatus();
                     // Kalau response status nya = true
-                    if (status){
-                        // Buat Adapter untuk recycler view
+//                    if (status){
+//                        // Buat Adapter untuk recycler view
                         AdapterBerita adapter = new AdapterBerita(MainActivity.this, data_berita);
                         recyclerView.setAdapter(adapter);
-                    } else {
+//                    } else {
                         // kalau tidak true
-                        Toast.makeText(MainActivity.this, "Tidak ada berita untuk saat ini", Toast.LENGTH_SHORT).show();
-                    }
+//                        Toast.makeText(MainActivity.this, "Tidak ada berita untuk saat ini", Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
 

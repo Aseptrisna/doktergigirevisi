@@ -6,7 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 public interface ApiService {
     //@TIPEMETHOD("API_END_POINT")
-    @GET("tampil_berita.php")
+    @GET("event/get_event_api")
     Call<ResponseBerita> request_show_all_berita();
     // <ModelData> nama_method()
 

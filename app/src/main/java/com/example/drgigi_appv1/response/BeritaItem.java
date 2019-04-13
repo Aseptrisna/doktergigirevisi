@@ -4,22 +4,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class BeritaItem{
 
-    @SerializedName("penulis")
+    @SerializedName("tittle")
     private String penulis;
 
-    @SerializedName("foto")
+    @SerializedName("pamflet")
     private String foto;
 
     @SerializedName("id")
     private String id;
 
-    @SerializedName("judul_berita")
+    @SerializedName("tgl_acara")
     private String judulBerita;
 
-    @SerializedName("tanggal_posting")
+    @SerializedName("narasumber")
     private String tanggalPosting;
 
-    @SerializedName("isi_berita")
+    @SerializedName("materi")
     private String isiBerita;
 
     public void setPenulis(String penulis){
@@ -74,12 +74,12 @@ public class BeritaItem{
     public String toString(){
         return
                 "BeritaItem{" +
-                        "penulis = '" + penulis + '\'' +
-                        ",foto = '" + foto + '\'' +
+                        "tittle = '" + penulis + '\'' +
+                        ",pamflet= '" + foto + '\'' +
                         ",id = '" + id + '\'' +
-                        ",judul_berita = '" + judulBerita + '\'' +
-                        ",tanggal_posting = '" + tanggalPosting + '\'' +
-                        ",isi_berita = '" + isiBerita + '\'' +
+                        ",tgl_acara = '" + judulBerita + '\'' +
+                        ",narasumber = '" + tanggalPosting + '\'' +
+                        ",materi = '" + isiBerita + '\'' +
                         "}";
     }
 }

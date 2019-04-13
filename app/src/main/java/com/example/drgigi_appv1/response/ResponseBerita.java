@@ -6,10 +6,10 @@ import java.util.List;
 
 public class ResponseBerita{
 
-    @SerializedName("berita")
+    @SerializedName("data")
     private List<BeritaItem> berita;
 
-    @SerializedName("status")
+    @SerializedName("error")
     private boolean status;
 
     public void setBerita(List<BeritaItem> berita){
@@ -32,8 +32,8 @@ public class ResponseBerita{
     public String toString(){
         return
                 "ResponseBerita{" +
-                        "berita = '" + berita + '\'' +
-                        ",status = '" + status + '\'' +
+                        "data = '" + berita + '\'' +
+                        ",error = '" + status + '\'' +
                         "}";
     }
 }

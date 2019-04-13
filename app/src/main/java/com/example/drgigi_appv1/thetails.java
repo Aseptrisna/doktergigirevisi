@@ -9,16 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-public class Details extends AppCompatActivity {
+public class thetails extends AppCompatActivity {
+
+
 
     // Deklarasi
     ImageView ivGambarBerita;
     TextView tvTglTerbit, tvPenulis;
     WebView wvKontenBerita;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.activity_thetails);
+
+
+
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //      setSupportActionBar(toolbar);
 
@@ -51,7 +57,7 @@ public class Details extends AppCompatActivity {
         String foto_berita = getIntent().getStringExtra("FTO_BERITA");
 
         // Set judul actionbar / toolbar
-        getSupportActionBar().setTitle(judul_berita);
+//        getSupportActionBar().setTitle(judul_berita);
 
         // Set ke widget
         tvPenulis.setText("Oleh : " + penulis_berita);
@@ -61,5 +67,17 @@ public class Details extends AppCompatActivity {
         // Set isi berita sebagai html ke WebView
         wvKontenBerita.getSettings().setJavaScriptEnabled(true);
         wvKontenBerita.loadData(isi_berita, "text/html; charset=utf-8", "UTF-8");
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

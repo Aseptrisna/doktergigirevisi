@@ -1,11 +1,10 @@
 package com.example.drgigi_appv1;
 
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,9 +15,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.drgigi_appv1.api.RetrofitClient;
+import com.example.drgigi_appv1.models.DefaultResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUp extends AppCompatActivity {
 
@@ -87,7 +89,7 @@ public class SignUp extends AppCompatActivity {
                         Snackbar snackbar1 = Snackbar.make(coordinatorLayout, "Silahkan ulangi", Snackbar.LENGTH_SHORT);
                         snackbar1.show();
                         fullName.setFocusableInTouchMode(true);
-                        email.setFocusableInTouchMode(true);
+                       email.setFocusableInTouchMode(true);
                         phoneNumber.setFocusableInTouchMode(true);
                         passwd.setFocusableInTouchMode(true);
                         special.setFocusableInTouchMode(true);
@@ -118,11 +120,29 @@ public class SignUp extends AppCompatActivity {
         } else if (d_address.equals("")) {
             showSnackbar();
         } else {
+
+        // Toast.makeText(SignUp.this,"Tombol sign up di tekan",Toast.LENGTH_LONG).show();
+            retrofit2.Call<DefaultResponse> call = RetrofitClient
+                    .getInstance()
+                    .getApi()
+                    .createUser(d_mail,d_pass,d_name,d_phone,d_address,d_spesialis);
+
+            call.enqueue(new Callback<DefaultResponse>() {
+                @Override
+                public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                   DefaultResponse df = response.body();
+                    Toast.makeText(SignUp.this,df.getMsg(),Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                    Toast.makeText(SignUp.this,t.toString(),Toast.LENGTH_LONG).show();
+                }
+            });
             Intent sign = new Intent(this, SignIn.class);
             startActivity(sign);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
-
         }
     }
 

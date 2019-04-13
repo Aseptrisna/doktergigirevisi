@@ -1,11 +1,10 @@
 package com.example.drgigi_appv1;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.transition.Explode;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,6 +13,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.example.drgigi_appv1.api.RetrofitClient;
+import com.example.drgigi_appv1.models.LoginResponse;
+import com.example.drgigi_appv1.storage.SharedPrefManager;
+
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignIn extends AppCompatActivity {
 
@@ -24,8 +31,22 @@ public class SignIn extends AppCompatActivity {
     Button in, up;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (SharedPrefManager.getInstance(this).isLoggedIn()){
+            Intent intent = new Intent(this,MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }else{
+            Toast.makeText(SignIn.this,"bel",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -70,15 +91,53 @@ public class SignIn extends AppCompatActivity {
         String user = String.valueOf(phone.getText());
         String pas = String.valueOf(passwd.getText());
 
+
+
+
+
         if (user.equals("")) {
             showSnackbar();
         } else if (pas.equals("")) {
             showSnackbar();
         } else {
-            Intent sign = new Intent(this, MainActivity.class);
-            startActivity(sign);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            finish();
+          // Intent sign = new Intent(this, MainActivity.class);
+            //startActivity(sign);
+            //overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            //finish();
+            retrofit2.Call<LoginResponse> call = RetrofitClient
+                    .getInstance()
+                    .getApi()
+                    .userLogin(user,pas);
+
+            call.enqueue(new Callback<LoginResponse>() {
+                @Override
+                public void onResponse(retrofit2.Call<LoginResponse> call, Response<LoginResponse> response) {
+                    LoginResponse loginResponse = response.body();
+
+                    if (!loginResponse.isError()){
+                        //save user and open profile
+                        SharedPrefManager.getInstance(SignIn.this)
+                                .saveUser(loginResponse
+                                        .getUser());
+
+                        Intent intent = new Intent(SignIn.this,MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+
+                    }else {
+                        Toast.makeText(SignIn.this, "Login Gagal", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(retrofit2.Call<LoginResponse> call, Throwable t) {
+                    Toast.makeText(SignIn.this, "Login gagal", Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+
+
         }
     }
 

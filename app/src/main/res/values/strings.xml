@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Detacare</string>
+    <string name="app_name">Dettacare-Event</string>
 
     <string name="in">Sign In</string>
     <string name="up">Sign Up</string>
@@ -20,7 +20,6 @@
     <string name="addrs">Alamat</string>
 
 
-
     <string name="list">Daftar Acara</string>
     <string name="cost">IDR</string>
     <string name="user">PARTICIPANT</string>
@@ -31,7 +30,6 @@
     <string name="list_d">500,000</string>
     <string name="list_e">200</string>
     <string name="list_f">Drg. Handoko Brimajaya</string>
-
 
 
     <string name="kec">Labuhan Ratu</string>

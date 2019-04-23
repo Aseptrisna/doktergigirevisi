@@ -1,5 +1,6 @@
 package com.example.drgigi_appv1;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -21,7 +22,6 @@ import com.example.drgigi_appv1.storage.SharedPrefManager;
 
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class SignIn extends AppCompatActivity {
 
     private CoordinatorLayout coordinatorLayout;
@@ -29,6 +29,7 @@ public class SignIn extends AppCompatActivity {
     LinearLayout one, two;
     Animation uptodown, downtoup;
     Button in, up;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onStart() {
@@ -39,7 +40,7 @@ public class SignIn extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }else{
-            Toast.makeText(SignIn.this,"bel",Toast.LENGTH_LONG).show();
+//            Toast.makeText(SignIn.this,"Dettacare-Event",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -88,13 +89,9 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void signIn(){
+        progressDialog = ProgressDialog.show(SignIn.this,"Loading.....",null,true,true);
         String user = String.valueOf(phone.getText());
         String pas = String.valueOf(passwd.getText());
-
-
-
-
-
         if (user.equals("")) {
             showSnackbar();
         } else if (pas.equals("")) {
@@ -124,13 +121,16 @@ public class SignIn extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
 
+
                     }else {
+                        progressDialog.dismiss();
                         Toast.makeText(SignIn.this, "Login Gagal", Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
                 public void onFailure(retrofit2.Call<LoginResponse> call, Throwable t) {
+                    progressDialog.dismiss();
                     Toast.makeText(SignIn.this, "Login gagal", Toast.LENGTH_LONG).show();
                 }
             });

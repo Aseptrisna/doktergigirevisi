@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dettacare-Event</string>
+    <string name="app_name">Vellid</string>
 
     <string name="in">Sign In</string>
     <string name="up">Sign Up</string>
@@ -15,9 +15,13 @@
     <string name="pass">Password</string>
     <string name="name">Nama Lengkap</string>
     <string name="email">Email</string>
-    <string name="telp">No. Telephone</string>
-    <string name="spesialis">Spesialis</string>
-    <string name="addrs">Alamat</string>
+    <string name="telp">No. Telephone/Whatsapp</string>
+    <string name="spesialis">No.KTA/NPA</string>
+    <string name="str">No.STR</string>
+    <string name="npm">No.NPM</string>
+    <string name="addrs">Alamat Rumah</string>
+    <string name="addrss">Alamat Korespondensi</string>
+    <string name="idktp">No.Identitas KTP</string>
 
 
     <string name="list">Daftar Acara</string>
@@ -28,10 +32,24 @@
     <string name="list_b">Minggu, 14 April 2014</string>
     <string name="list_c">Hotel grand kemang, Jakarta</string>
     <string name="list_d">500,000</string>
-    <string name="list_e">200</string>
+    <string name="list_e">200000</string>
     <string name="list_f">Drg. Handoko Brimajaya</string>
 
 
     <string name="kec">Labuhan Ratu</string>
     <string name="kab">Bandar Lampung</string>
+    <string name="status">Pilih Profesi</string>
+
+    <string name="dokter">Dokter</string>
+    <string name="mahasiswa">Mahasiswa</string>
+    <string name="jk">Jenis Kelamin</string>
+
+    <string name="lk">Laki-laki</string>
+    <string name="pr">Perempuan</string>
+
+    <string name="ttl">Tempat dan Tanggal Lahir</string>
+    <string name="usr">username</string>
+    <string name="spinner_title">pilih item</string>
+    <string name="title_activity_menuprofil">menuprofil</string>
+
 </resources>

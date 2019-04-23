@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/doctor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".thetails"></activity>
+        <activity
+            android:name=".menuprofil"
+            android:label="@string/title_activity_menuprofil"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".detailacara" />
+        <activity android:name=".SignIn" />
+        <activity android:name=".thetails" />
         <activity android:name=".Details" />
         <activity
             android:name=".Notify"
@@ -24,7 +30,7 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignIn"
+            android:name=".SpashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

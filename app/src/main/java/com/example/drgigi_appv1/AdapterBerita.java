@@ -42,27 +42,49 @@ class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         // Set widget
-        holder.tvJudul.setText(berita.get(position).getJudulBerita());
-        holder.tvTglTerbit.setText(berita.get(position).getTanggalPosting());
-
+        holder.tvJudul.setText(berita.get(position).getTitle());
+        holder.tvTglTerbit.setText(berita.get(position).getTgl_acara());
+        holder.tvPenulis.setText(berita.get(position).getValue());
+      holder.kec.setText(berita.get(position).getKecamatan());
+      holder.kab.setText(berita.get(position).getKota());
+        holder.cost.setText(berita.get(position).getBiaya());
+        holder.partisipant.setText(berita.get(position).getKouta());
+//    holder.spesialis.setText(berita.get(position).getMateri());
         // Dapatkan url gambar
-        final String urlGambarBerita = "http://192.168.3.102:5000/" + berita.get(position).getFoto();
+        final String urlGambarBerita = "http://192.168.2.17:5000/" + berita.get(position).getPamlet();
         // Set image ke widget dengna menggunakan Library Piccasso
         // krena imagenya dari internet
         Picasso.with(context).load(urlGambarBerita).into(holder.ivGambarBerita);
+
 
         // Event klik ketika item list nya di klik
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Mulai activity Detail
-                Intent varIntent = new Intent(context, thetails.class);
+                Intent varIntent = new Intent(context, detailacara.class);
                 // sisipkan data ke intent
-                varIntent.putExtra("JDL_BERITA", berita.get(position).getJudulBerita());
-                varIntent.putExtra("TGL_BERITA", berita.get(position).getTanggalPosting());
-                varIntent.putExtra("PNS_BERITA", berita.get(position).getPenulis());
-                varIntent.putExtra("FTO_BERITA", urlGambarBerita);
-                varIntent.putExtra("ISI_BERITA", berita.get(position).getIsiBerita());
+                varIntent.putExtra("JDL_SMR", berita.get(position).getTitle());
+                varIntent.putExtra("TGL_SMR", berita.get(position).getTgl_acara());
+                varIntent.putExtra("KOTA_SMR", berita.get(position).getKota());
+                varIntent.putExtra("FOTO", urlGambarBerita);
+                varIntent.putExtra("KEC_SMR", berita.get(position).getKecamatan());
+                varIntent.putExtra("KOUTA", berita.get(position).getKouta());
+                varIntent.putExtra("BIAYA", berita.get(position).getBiaya());
+                varIntent.putExtra("MATERI", berita.get(position).getValue());
+                varIntent.putExtra("LOKASI", berita.get(position).getLokasi());
+                varIntent.putExtra("CP", berita.get(position).getCp());
+                varIntent.putExtra("EMAIL", berita.get(position).getEmail());
+
+
+
+
+                // sisipkan data ke intent
+//                varIntent.putExtra("JDL_BERITA", berita.get(position).getTitle());
+//                varIntent.putExtra("TGL_BERITA", berita.get(position).getTgl_acara());
+//                varIntent.putExtra("PNS_BERITA", berita.get(position).getKota());
+//                varIntent.putExtra("FTO_BERITA", urlGambarBerita);
+//                varIntent.putExtra("ISI_BERITA", berita.get(position).getKecamatan());
 
                 // method startActivity cma bisa di pake di activity/fragment
                 // jadi harus masuk ke context dulu
@@ -79,14 +101,20 @@ class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // Deklarasi widget
         ImageView ivGambarBerita;
-        TextView tvJudul, tvTglTerbit, tvPenulis;
+        TextView tvJudul, tvTglTerbit, tvPenulis,kec,kab,cost,partisipant,spesialis;
         public MyViewHolder(View itemView) {
             super(itemView);
             // inisialisasi widget
             ivGambarBerita = (ImageView) itemView.findViewById(R.id.thumb);
             tvJudul = (TextView) itemView.findViewById(R.id.title);
-            tvTglTerbit = (TextView) itemView.findViewById(R.id.speaker);
-            tvPenulis = (TextView) itemView.findViewById(R.id.kec);
+            tvTglTerbit = (TextView) itemView.findViewById(R.id.time);
+            tvPenulis = (TextView) itemView.findViewById(R.id.speaker);
+            kec=(TextView)itemView.findViewById(R.id.kec);
+            kab=(TextView)itemView.findViewById(R.id.kab);
+            cost=(TextView)itemView.findViewById(R.id.cost);
+            partisipant=(TextView)itemView.findViewById(R.id.participant);
+           // spesialis=(TextView)itemView.findViewById(R.id.spesialis);
+
         }
     }
 }
